@@ -1,73 +1,189 @@
-# Welcome to your Lovable project
+# 🎯 Placement Readiness Platform
 
-## Project info
+A comprehensive web-based platform designed to help students prepare for campus placements and job interviews. Built with modern technologies to provide an interactive and efficient learning experience.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![Platform Status](https://img.shields.io/badge/status-active-success.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## How can I edit this code?
+## 📋 Table of Contents
 
-There are several ways of editing your application.
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-**Use Lovable**
+## 🎓 About
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The Placement Readiness Platform is an all-in-one solution for students preparing for campus placements. It provides comprehensive resources including aptitude tests, coding practice, interview preparation materials, and performance tracking to help students ace their placement drives.
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Features
 
-**Use your preferred IDE**
+- **📊 Aptitude Practice** - Comprehensive quantitative and logical reasoning questions
+- **💻 Coding Challenges** - Programming problems to enhance technical skills
+- **📝 Mock Tests** - Timed tests simulating real placement exams
+- **📈 Progress Tracking** - Monitor your improvement over time
+- **🎯 Company-Specific Prep** - Tailored content for top recruiters
+- **🤝 Interview Preparation** - Technical and HR interview resources
+- **📱 Responsive Design** - Seamless experience across all devices
+- **🎨 Modern UI/UX** - Clean, intuitive interface built with shadcn/ui
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Frontend
+- **React 18** - UI library for building interactive interfaces
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Next-generation frontend tooling
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautifully designed components
 
-Follow these steps:
+### Development Tools
+- **ESLint** - Code linting and quality checks
+- **Vitest** - Unit testing framework
+- **PostCSS** - CSS processing
+- **Bun** - Fast JavaScript runtime and package manager
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Prerequisites
 
-# Step 3: Install the necessary dependencies.
-npm i
+Before you begin, ensure you have the following installed:
+- **Node.js** (v18 or higher) - [Download](https://nodejs.org/)
+- **npm** or **Bun** - Package manager
+- **Git** - Version control
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Installation
+
+1. **Clone the repository**
+```bash
+   git clone https://github.com/AbhinavKG27/Placement-Readiness-Platform.git
+   cd Placement-Readiness-Platform
 ```
 
-**Edit a file directly in GitHub**
+2. **Install dependencies**
+   
+   Using npm:
+```bash
+   npm install
+```
+   
+   Or using Bun:
+```bash
+   bun install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. **Start the development server**
+   
+   Using npm:
+```bash
+   npm run dev
+```
+   
+   Or using Bun:
+```bash
+   bun run dev
+```
 
-**Use GitHub Codespaces**
+4. **Open your browser**
+   
+   Navigate to `http://localhost:5173` to view the application
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 💡 Usage
 
-## What technologies are used for this project?
+### Development
+```bash
+# Run development server
+npm run dev
 
-This project is built with:
+# Run tests
+npm run test
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Build for production
+npm run build
 
-## How can I deploy this project?
+# Preview production build
+npm run preview
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+# Lint code
+npm run lint
+```
 
-## Can I connect a custom domain to my Lovable project?
+### Building for Production
+```bash
+npm run build
+```
 
-Yes, you can!
+The optimized production-ready files will be generated in the `dist` directory.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📁 Project Structure
+```
+Placement-Readiness-Platform/
+├── public/              # Static assets
+├── src/                 # Source files
+│   ├── components/      # React components
+│   ├── pages/          # Page components
+│   ├── lib/            # Utility functions
+│   ├── hooks/          # Custom React hooks
+│   ├── styles/         # Global styles
+│   └── App.tsx         # Main application component
+├── .gitignore          # Git ignore rules
+├── components.json     # shadcn/ui configuration
+├── eslint.config.js    # ESLint configuration
+├── index.html          # HTML entry point
+├── package.json        # Project dependencies
+├── postcss.config.js   # PostCSS configuration
+├── tailwind.config.ts  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+├── vite.config.ts      # Vite configuration
+└── vitest.config.ts    # Vitest configuration
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Contribution Guidelines
+
+- Follow the existing code style and conventions
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+**Abhinav KG** - [@AbhinavKG27](https://github.com/AbhinavKG27)
+
+Project Link: [https://github.com/AbhinavKG27/Placement-Readiness-Platform](https://github.com/AbhinavKG27/Placement-Readiness-Platform)
+
+## 🙏 Acknowledgments
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+<div align="center">
+  <strong>Built with ❤️ for students preparing for placements</strong>
+  
+  ⭐ Star this repository if you found it helpful!
+</div>
