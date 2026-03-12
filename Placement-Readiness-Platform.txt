@@ -1,0 +1,507 @@
+#1 step
+
+Create a premium SaaS design system called "KodNest Premium Build System".
+
+This is not a student project. This must feel like a serious B2C product company.
+
+DESIGN PHILOSOPHY:
+- Calm, Intentional, Coherent, Confident
+- Not flashy, not loud, not playful, not hackathon-style
+- No gradients, no glassmorphism, no neon colors, no animation noise
+
+COLOR SYSTEM:
+- Background: #F7F6F3 (off-white)
+- Primary text: #111111
+- Accent: #8B0000 (deep red)
+- Success: muted green
+- Warning: muted amber
+- Use maximum 4 colors across entire system
+
+TYPOGRAPHY:
+- Headings: Serif font, large, confident, generous spacing
+- Body: Clean sans-serif, 16–18px, line-height 1.6–1.8, max 720px for text blocks
+- No decorative fonts, no random sizes
+
+SPACING SYSTEM (consistent scale):
+8px, 16px, 24px, 40px, 64px
+Never use random spacing like 13px, 27px, etc. Whitespace is part of design.
+
+GLOBAL LAYOUT STRUCTURE:
+Every page must follow: [Top Bar] → [Context Header] → [Primary Workspace + Secondary Panel] → [Proof Footer]
+
+TOP BAR:
+- Left: Project name
+- Center: Progress indicator (Step X / Y)
+- Right: Status badge (Not Started / In Progress / Shipped)
+
+CONTEXT HEADER:
+- Large serif headline, 1-line subtext, clear purpose, no hype language
+
+PRIMARY WORKSPACE (70% width):
+- Where the main product interaction happens
+- Clean cards, predictable components, no crowding
+
+SECONDARY PANEL (30% width):
+- Step explanation (short)
+- Copyable prompt box
+- Buttons: Copy, Build in Lovable, It Worked, Error, Add Screenshot
+- Calm styling
+
+PROOF FOOTER (persistent bottom section):
+Checklist style: □ UI Built □ Logic Working □ Test Passed □ Deployed
+Each checkbox requires user proof input.
+
+COMPONENT RULES:
+- Primary button = solid deep red, Secondary = outlined
+- Same hover effect and border radius everywhere
+- Inputs: clean borders, no heavy shadows, clear focus state
+- Cards: subtle border, no drop shadows, balanced padding
+
+INTERACTION RULES:
+- Transitions: 150–200ms, ease-in-out, no bounce, no parallax
+
+ERROR & EMPTY STATES:
+- Errors: explain what went wrong + how to fix, never blame user
+- Empty states: provide next action, never feel dead
+
+Everything must feel like one mind designed it. No visual drift. Return confirmation once design system is created. Do NOT add product features yet.
+
+#2 step
+Create a Placement Readiness Platform application with React, Tailwind CSS, and React Router.
+
+1. Build a landing page with:
+   - A hero section: heading "Ace Your Placement", subheading "Practice, assess, and prepare for your dream job", and a "Get Started" button
+   - A features grid (3 columns) with cards: "Practice Problems" (with code icon), "Mock Interviews" (with video icon), "Track Progress" (with chart icon). Each card has a title and one-line description.
+   - A footer with copyright text
+
+2. Create an app shell for the dashboard area with:
+   - Sidebar navigation with links: Dashboard, Practice, Assessments, Resources, Profile
+   - Use lucide-react icons for each nav item
+   - A header showing "Placement Prep" and a user avatar placeholder
+   - Main content area with <Outlet />
+
+3. Use an indigo/purple color scheme — primary: hsl(245, 58%, 51%).
+
+4. Make the "Get Started" button navigate to the Dashboard page. Create placeholder pages for each route.
+
+#3 Step
+
+Build the Dashboard page with the following components:
+
+1. "Overall Readiness" — a large circular progress indicator showing 72/100. Use a custom SVG circle with stroke-dasharray animation. Show the number in the center with "Readiness Score" label below.
+
+2. "Skill Breakdown" — a radar chart using recharts with 5 axes: DSA (75), System Design (60), Communication (80), Resume (85), Aptitude (70). Use ResponsiveContainer.
+
+3. "Continue Practice" — a card showing the last topic: "Dynamic Programming", with a progress bar (3/10 completed) and a "Continue" button.
+
+4. "Weekly Goals" — show "Problems Solved: 12/20 this week" with a progress bar. Below it, show 7 small day circles (Mon-Sun), filled for days with activity.
+
+5. "Upcoming Assessments" — a list of 3 items:
+   - "DSA Mock Test" — Tomorrow, 10:00 AM
+   - "System Design Review" — Wed, 2:00 PM
+   - "HR Interview Prep" — Friday, 11:00 AM
+
+Use shadcn/ui Card components. Layout: 2-column grid on desktop, single column on mobile. Use recharts for the radar chart with mock data.
+
+#4 Step
+
+Upgrade Placement Readiness Platform with REAL working analysis logic (still no external scraping).
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Keep premium design.
+- Persist history in localStorage.
+
+1) Implement skill extraction (heuristic):
+
+Detect keywords from JD text (case-insensitive) across categories:
+
+Core CS:
+DSA, OOP, DBMS, OS, Networks
+
+Languages:
+Java, Python, JavaScript, TypeScript, C, C++, C#, Go
+
+Web:
+React, Next.js, Node.js, Express, REST, GraphQL
+
+Data:
+SQL, MongoDB, PostgreSQL, MySQL, Redis
+
+Cloud/DevOps:
+AWS, Azure, GCP, Docker, Kubernetes, CI/CD, Linux
+
+Testing:
+Selenium, Cypress, Playwright, JUnit, PyTest
+
+If JD includes none, still show "General fresher stack".
+
+2) Generate outputs from detected skills:
+
+A) Key skills extracted
+- show tags grouped by category
+
+B) Round-wise preparation checklist (template-based):
+- Round 1: Aptitude / Basics
+- Round 2: DSA + Core CS
+- Round 3: Tech interview (projects + stack)
+- Round 4: Managerial / HR
+
+Each round should list 5–8 checklist items based on skills detected.
+
+C) 7-day plan:
+Day 1–2: Basics + core CS
+Day 3–4: DSA + coding practice
+Day 5: Project + resume alignment
+Day 6: Mock interview questions
+Day 7: Revision + weak areas
+
+Adapt the plan based on detected skills (e.g., React present → include frontend revision).
+
+D) 10 likely interview questions:
+Generate questions based on detected skills.
+Example:
+If SQL present → "Explain indexing and when it helps."
+If React present → "Explain state management options."
+If DSA present → "How would you optimize search in sorted data?"
+Keep questions specific, not generic.
+
+3) Readiness score (0–100):
+Start 35.
++5 per detected category present (max 30).
++10 if company name provided.
++10 if role provided.
++10 if JD length > 800 chars.
+Cap at 100.
+
+4) Save to History:
+On Analyze, store an entry in localStorage:
+{
+  id,
+  createdAt,
+  company,
+  role,
+  jdText,
+  extractedSkills,
+  plan,
+  checklist,
+  questions,
+  readinessScore
+}
+
+History page:
+- list entries with date + company + role + score
+- clicking one opens /results with that saved entry
+
+Results page must render latest analysis or selected history item.
+
+No external APIs.
+No scraping.
+Everything must work offline and persist on refresh.
+
+OUTPUT REQUIRED:
+- Confirm skill extraction works
+- Confirm history persists after refresh
+- Provide steps to verify with a sample JD
+
+#5 Step
+
+Upgrade Placement Readiness Platform by making results interactive and exportable.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Keep premium design.
+- Persist changes per history entry.
+
+1) Interactive skill self-assessment
+
+On /results in "Key skills extracted":
+- Each skill tag must have a toggle:
+  - "I know this"
+  - "Need practice"
+Default: Need practice
+
+Store user selection inside the history entry under:
+skillConfidenceMap[skill] = "know" | "practice"
+
+2) Live readiness score updates
+
+Start from base readinessScore (already computed).
+Then:
++2 for each skill marked "I know"
+-2 for each skill marked "Need practice"
+Bounds: 0–100
+Update score in real-time.
+
+3) Export tools
+
+Add buttons on /results:
+- "Copy 7-day plan" (plain text)
+- "Copy round checklist"
+- "Copy 10 questions"
+- "Download as TXT" (single file combining all sections)
+
+4) Keep history consistent
+
+When user edits skill confidence and score changes:
+- save back into the selected history entry in localStorage
+- reopening from /history must retain changes
+
+5) Add a calm "Action Next" box
+
+At bottom of /results:
+- Show top 3 weak skills (practice-marked)
+- Suggest next action:
+  "Start Day 1 plan now."
+
+OUTPUT REQUIRED:
+- Confirm live score works
+- Confirm toggles persist after refresh
+- Verification steps
+
+#6 Step
+
+Upgrade Placement Readiness Platform by adding a Company Intel + Round Mapping layer.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Keep premium design.
+- No external scraping.
+
+1) Company Intel block
+
+On /results, if company name is provided:
+
+Create a structured info card:
+- Company name
+- Industry (infer simple guess based on keywords or default to "Technology Services")
+- Estimated size category:
+   - Startup (<200)
+   - Mid-size (200–2000)
+   - Enterprise (2000+)
+
+Use heuristic rules:
+   If company matches known list (Amazon, Infosys, TCS, etc.) → Enterprise
+   If unknown → Startup by default
+
+Add:
+- "Typical Hiring Focus" section (template text)
+   - For Enterprise: structured DSA + core fundamentals
+   - For Startup: practical problem solving + stack depth
+
+2) Round Mapping Engine
+
+Based on detected skills and company size:
+
+Generate dynamic round mapping:
+
+Example:
+Enterprise + DSA detected →
+Round 1: Online Test (DSA + Aptitude)
+Round 2: Technical (DSA + Core CS)
+Round 3: Tech + Projects
+Round 4: HR
+
+Startup + React/Node detected →
+Round 1: Practical coding
+Round 2: System discussion
+Round 3: Culture fit
+
+Display round flow as vertical timeline.
+
+3) Add "Why this round matters" short explanation under each round.
+
+4) Persist this intel inside history entry.
+
+5) Add small note:
+"Demo Mode: Company intel generated heuristically."
+
+OUTPUT REQUIRED:
+- Confirm company intel renders correctly.
+- Confirm round mapping changes based on company + skills.
+- Provide test scenario examples.
+
+#7 step
+
+Harden Placement Readiness Platform with strict data model, validation, and edge case handling.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Keep premium design.
+
+1) Input validation on Home (/)
+- JD textarea must be required.
+- If JD < 200 characters:
+  show calm warning:
+  "This JD is too short to analyze deeply. Paste full JD for better output."
+- Company and Role remain optional.
+
+2) Standardize Analysis Entry Schema
+Ensure every saved history entry has these fields (even if empty):
+{
+  id,
+  createdAt,
+  company: string | "",
+  role: string | "",
+  jdText: string,
+  extractedSkills: {
+    coreCS: string[],
+    languages: string[],
+    web: string[],
+    data: string[],
+    cloud: string[],
+    testing: string[],
+    other: string[]
+  },
+  roundMapping: [{ roundTitle, focusAreas[], whyItMatters }],
+  checklist: [{ roundTitle, items[] }],
+  plan7Days: [{ day, focus, tasks[] }],
+  questions: string[],
+  baseScore: number,
+  skillConfidenceMap: { [skill]: "know" | "practice" },
+  finalScore: number,
+  updatedAt: string
+}
+
+3) Default behavior if no skills detected
+If extraction returns empty:
+- populate "other" with:
+  ["Communication", "Problem solving", "Basic coding", "Projects"]
+- adjust plan/checklist/questions accordingly.
+
+4) Score stability rules
+- baseScore computed only on analyze.
+- finalScore changes only based on skillConfidenceMap.
+- When user toggles skills:
+  update finalScore + updatedAt
+  persist to history entry.
+
+5) History robustness
+- If localStorage has corrupted entry, skip and show:
+  "One saved entry couldn't be loaded. Create a new analysis."
+
+OUTPUT REQUIRED:
+- Confirm schema is consistent.
+- Confirm validation works.
+- Provide verification steps for edge cases.
+
+#8 Step
+
+Add a built-in Test Checklist for Placement Readiness Platform and lock shipping until all tests are passed.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove features.
+- Keep premium design.
+
+1) Add checklist UI on /prp/07-test with these 10 tests:
+
+□ JD required validation works
+□ Short JD warning shows for <200 chars
+□ Skills extraction groups correctly
+□ Round mapping changes based on company + skills
+□ Score calculation is deterministic
+□ Skill toggles update score live
+□ Changes persist after refresh
+□ History saves and loads correctly
+□ Export buttons copy the correct content
+□ No console errors on core pages
+
+Each item must have:
+- checkbox
+- optional "How to test" hint
+
+2) Add summary at top:
+"Tests Passed: X / 10"
+
+Show warning if <10:
+"Fix issues before shipping."
+
+3) Ship lock:
+Route /prp/08-ship must be locked until all 10 items are checked.
+
+Add reset button:
+"Reset checklist"
+
+OUTPUT REQUIRED:
+- Confirm checklist stored in localStorage and persists.
+- Confirm /prp/08-ship is locked until checklist complete.
+- Verification steps.
+
+#9 Step
+
+Finalize Placement Readiness Platform with Proof + Submission System.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Keep premium design.
+- Do NOT bypass checklist lock.
+
+1) BUILD PROOF PAGE (/prp/proof)
+
+Sections:
+
+A) Step Completion Overview
+- Show all 8 steps with status:
+  Completed / Pending
+
+B) Artifact Inputs (Required for Ship Status)
+- Lovable Project Link (URL validation required)
+- GitHub Repository Link (URL validation required)
+- Deployed URL (URL validation required)
+
+Store links in localStorage under:
+prp_final_submission
+
+2) FINAL SUBMISSION EXPORT
+
+Add button:
+"Copy Final Submission"
+
+It should copy formatted text:
+
+------------------------------------------
+Placement Readiness Platform — Final Submission
+
+Lovable Project: {link}
+GitHub Repository: {link}
+Live Deployment: {link}
+
+Core Capabilities:
+- JD skill extraction (deterministic)
+- Round mapping engine
+- 7-day prep plan
+- Interactive readiness scoring
+- History persistence
+------------------------------------------
+
+3) SHIPPED STATUS RULE
+
+Project status badge changes to "Shipped" ONLY IF:
+- All 8 steps marked completed
+- All 10 checklist items passed
+- All 3 proof links provided
+
+Otherwise:
+Status remains "In Progress".
+
+4) COMPLETION MESSAGE
+
+When status becomes "Shipped":
+Display:
+
+"You built a real product.
+Not a tutorial. Not a clone.
+A structured tool that solves a real problem.
+
+This is your proof of work."
+
+OUTPUT REQUIRED:
+- Confirm proof page works with URL validation.
+- Confirm Shipped status only triggers when all conditions met.
+- Confirm copy export produces correct formatted text.
+- Verification steps.
