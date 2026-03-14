@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Code, Video, BarChart3, ArrowRight } from "lucide-react";
+import { Code, Video, BarChart3, ArrowRight, Moon, Sun } from "lucide-react";
 import { analyzeJD } from "@/lib/analysis";
 import { saveToHistory } from "@/lib/storage";
+import { useAppTheme } from "@/hooks/use-app-theme";
 
 const FEATURES = [
   { icon: Code, title: "Practice Problems", desc: "Curated coding challenges aligned to placement patterns." },
@@ -12,6 +13,7 @@ const FEATURES = [
 
 export default function Index() {
   const navigate = useNavigate();
+  const { isDark, toggle } = useAppTheme();
   const [jd, setJd] = useState("");
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
@@ -36,40 +38,40 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Nav */}
       <nav className="flex items-center justify-between border-b border-border px-6 py-4 lg:px-16">
-        <span className="font-serif text-xl font-bold">KodNest</span>
         <button
-          onClick={() => navigate("/dashboard")}
-          className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-default hover:opacity-90"
+          onClick={() => navigate("/")}
+          className="inline-flex items-center gap-2 rounded-md border-0 bg-transparent p-0 text-left"
+          aria-label="Go to home"
         >
-          Dashboard
+          <span className="nav-logo-mark inline-flex h-8 w-8 items-center justify-center text-sm font-semibold font-mono">K</span>
+          <span className="font-display text-xl font-semibold tracking-tight italic">KodNest</span>
         </button>
+        <div className="flex items-center gap-3">
+          <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
+            <span className="toggle-pill">
+              <span className="toggle-circle">{isDark ? <Moon size={12} /> : <Sun size={12} />}</span>
+            </span>
+            <span className="toggle-label">{isDark ? "Dark" : "Light"}</span>
+          </button>
+          <button onClick={() => navigate("/dashboard")} className="btn-primary">
+            Dashboard
+          </button>
+        </div>
       </nav>
 
       {/* Hero */}
-      <section className="flex flex-col items-center px-6 pt-24 pb-16 text-center">
-        <h1 className="mb-4 max-w-2xl text-4xl leading-tight md:text-5xl">
-          Ace Your Placement
-        </h1>
-        <p className="mb-10 max-w-xl text-lg text-muted-foreground">
-          Practice, assess, and prepare for your dream job.
-        </p>
-        <a
-          href="#analyze"
-          className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-default hover:opacity-90"
-        >
+      <section className="flex flex-col items-center px-6 pb-16 pt-24 text-center">
+        <h1 className="mb-4 max-w-2xl text-4xl leading-tight md:text-5xl">Ace Your Placement</h1>
+        <p className="mb-10 max-w-xl text-lg text-muted-foreground">Practice, assess, and prepare for your dream job.</p>
+        <a href="#analyze" className="btn-primary inline-flex items-center gap-2 px-6 py-3">
           Get Started <ArrowRight size={18} />
         </a>
       </section>
 
       {/* Analyze Section */}
-      <section
-        id="analyze"
-        className="mx-auto max-w-2xl px-6 pb-20"
-      >
+      <section id="analyze" className="mx-auto max-w-2xl px-6 pb-20">
         <h2 className="mb-2 text-center text-2xl">Analyze a Job Description</h2>
-        <p className="mb-8 text-center text-muted-foreground">
-          Paste a JD to get a personalized preparation plan.
-        </p>
+        <p className="mb-8 text-center text-muted-foreground">Paste a JD to get a personalized preparation plan.</p>
 
         <div className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -88,20 +90,16 @@ export default function Index() {
           </div>
           <textarea
             value={jd}
-            onChange={(e) => { setJd(e.target.value); setWarning(""); }}
+            onChange={(e) => {
+              setJd(e.target.value);
+              setWarning("");
+            }}
             rows={10}
             placeholder="Paste the full job description here…"
             className="w-full rounded-md border border-input bg-card px-4 py-3 text-sm leading-relaxed outline-none transition-default focus:border-primary focus:ring-1 focus:ring-ring"
           />
-          {warning && (
-            <p className="rounded-md bg-warning/10 px-4 py-2 text-sm text-warning-foreground">
-              {warning}
-            </p>
-          )}
-          <button
-            onClick={handleAnalyze}
-            className="w-full rounded-md bg-primary py-3 font-semibold text-primary-foreground transition-default hover:opacity-90"
-          >
+          {warning && <p className="rounded-md bg-warning/10 px-4 py-2 text-sm text-warning-foreground">{warning}</p>}
+          <button onClick={handleAnalyze} className="btn-primary w-full justify-center py-3">
             Analyze
           </button>
         </div>
