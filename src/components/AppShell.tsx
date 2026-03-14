@@ -33,11 +33,7 @@ function SidebarLink({ to, icon: Icon, label }: { to: string; icon: React.Elemen
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-default ${
-          isActive
-            ? "bg-primary/10 text-primary font-semibold"
-            : "text-muted-foreground hover:bg-accent hover:text-foreground"
-        }`
+        `nav-link flex items-center gap-3 px-3 py-2 text-sm ${isActive ? "active font-semibold" : ""}`
       }
     >
       <Icon size={18} />
@@ -48,11 +44,10 @@ function SidebarLink({ to, icon: Icon, label }: { to: string; icon: React.Elemen
 
 export default function AppShell() {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col bg-background text-foreground">
       <TopBar />
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
-        <aside className="hidden w-56 shrink-0 border-r border-border bg-sidebar p-4 md:flex md:flex-col md:justify-between overflow-y-auto">
+      <div className="flex flex-1 overflow-hidden pt-14">
+        <aside className="sidebar hidden w-56 shrink-0 border-r border-border p-4 md:flex md:flex-col md:justify-between overflow-y-auto">
           <div>
             <nav className="flex flex-col gap-1">
               {NAV.map((n) => (
@@ -60,9 +55,7 @@ export default function AppShell() {
               ))}
             </nav>
             <div className="my-4 h-px bg-border" />
-            <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Build
-            </p>
+            <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Build</p>
             <nav className="flex flex-col gap-1">
               {BUILD_NAV.map((n) => (
                 <SidebarLink key={n.to} {...n} />
@@ -71,8 +64,7 @@ export default function AppShell() {
           </div>
         </aside>
 
-        {/* Main content */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="panel flex-1 overflow-y-auto">
           <div className="mx-auto max-w-5xl px-6 py-10">
             <Outlet />
           </div>
